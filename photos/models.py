@@ -18,45 +18,44 @@ class Image(models.Model):
   category = models.ForeignKey(
         Category, on_delete=models.SET_NULL, null=True, blank=True)
 
-def save_image(self):
+  def save_image(self):
         """
         This is the function that we will use to save the instance of this class
         """
         self.save()
 
-def delete_image(self):
+  def delete_image(self):
         """
         This is the function that we will use to delete the instance of this class
         """
         Image.objects.get(id = self.id).delete()
 
-def update_image(self,val):
+  def update_image(self,val):
         """
         This is the method to update the instance
         """
         Image.objects.filter(id = self.id).update(name = val)
 
-@classmethod
-def get_image_by_id(cls,image_id):
+  @classmethod
+  def get_image_by_id(cls,image_id):
         """
         This is the method to get a specific image
         """
         return cls.objects.get(id = image_id)
 
-@classmethod
-def get_images(cls):
+  @classmethod
+  def get_images(cls):
         return cls.objects.all()
 
-@classmethod
-def search_image(cls,category):
+  @classmethod
+  def search_image(cls,category):
         """
         This is the method to search images based on a specific category
         """
-        try:   
-            searched_category = Category.objects.filter(name__icontains  = category)[0]
-            return cls.objects.filter(category_id = searched_category.id)
-        except Exception:
-            return "No images found"
+         
+        searched_category = Image.objects.filter(category__name  = category)
+        return searched_category
+        
     
-def __str__(self):
+  def __str__(self):
         return self.description
