@@ -71,8 +71,8 @@ $ sudo apt-get install postgresql postgresql-contrib libpq-dev
 `python3.6 manage.py test photos`
 
 ### Django Admin
-Username: marvin_chomba
-Password:<see_me>
+Username: moringa
+Password: Access
 
 ### Known Bugs :x:
 Currently, there are no known bugs
