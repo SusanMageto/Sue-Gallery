@@ -1,3 +1,4 @@
+from distutils.command.upload import upload
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -9,15 +10,13 @@ class Category(models.Model):
    def __str__(self):
         return self.name
       
-class Image(models.Model):
-  class Meta:
-        verbose_name = 'Photo'
-        verbose_name_plural = 'Photos'
-    
+class Image(models.Model):   
+  
+  image = models.ImageField(null=False, blank=False, upload_to='photos/')
+  name = models.CharField(max_length = 30)
+  description = models.TextField()
   category = models.ForeignKey(
         Category, on_delete=models.SET_NULL, null=True, blank=True)
-  image = models.ImageField(null=False, blank=False)
-  description = models.TextField()
 
   def __str__(self):
         return self.description
