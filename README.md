@@ -1,4 +1,4 @@
-# Pixels
+# Gallery
 
 ###  Author
 Susan Nyabate
